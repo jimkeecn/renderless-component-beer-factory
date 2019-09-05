@@ -29,6 +29,8 @@ export class BeerService {
   ];
   constructor() {}
 
+  /* return current beer data to the api */
+
   public getBeers(): Observable<any> {
     const beers$ = new Observable(observer => {
       setTimeout(() => {
@@ -37,6 +39,10 @@ export class BeerService {
     });
     return beers$;
   }
+
+  /* add one more beer into stock and return all beers 
+     @param beer (any) : an beer object that has name, quantity, price
+  */
 
   public stockBeer(beer): Observable<any> {
     const beers$ = new Observable(observer => {
@@ -51,6 +57,10 @@ export class BeerService {
     });
     return beers$;
   }
+
+  /* remove 1 beer from stock and return all beers 
+     @param beer (any) : an beer object that has name, quantity, price
+  */
 
   public sellBeer(beer): Observable<any> {
     const beers$ = new Observable(observer => {
