@@ -29,7 +29,7 @@ export class BeerService {
   ];
   constructor() {}
 
-  public getBeers(): any {
+  public getBeers(): Observable<any> {
     const beers$ = new Observable(observer => {
       setTimeout(() => {
         observer.next(this.beers);
@@ -38,7 +38,7 @@ export class BeerService {
     return beers$;
   }
 
-  public stockBeer(beer) {
+  public stockBeer(beer): Observable<any> {
     const beers$ = new Observable(observer => {
       setTimeout(() => {
         this.beers.forEach(item => {
@@ -52,7 +52,7 @@ export class BeerService {
     return beers$;
   }
 
-  public sellBeer(beer) {
+  public sellBeer(beer): Observable<any> {
     const beers$ = new Observable(observer => {
       setTimeout(() => {
         this.beers.forEach(item => {
