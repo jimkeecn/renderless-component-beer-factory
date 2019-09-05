@@ -1,20 +1,34 @@
-import { Component, OnInit, EventEmitter } from "@angular/core";
+import { Component, OnInit, EventEmitter, Input, Output } from "@angular/core";
 import { BeerService } from "./beer.service";
 
 @Component({
   selector: "app-core-beer",
-  inputs: ["beers"],
   template: "<ng-content></ng-content>"
 })
 export class BeerCoreComponent {
-  public beers: [];
-  public beersChangeEvent: EventEmitter<any[]>;
+  beers: [];
+  @Output() public beersChangeEvent = new EventEmitter<any[]>();
 
   constructor(private beerService: BeerService) {}
 
   public getBeers(): void {
     this.beerService.getBeers().subscribe(res => {
-      this.beersChangeEvent.emit(res);
+      this.beers = res;
+      this.beersChangeEvent.emit(this.beers);
+    });
+  }
+
+  public stockBeer(beer): void {
+    this.beerService.stockBeer(beer).subscribe(res => {
+      this.beers = res;
+      this.beersChangeEvent.emit(this.beers);
+    });
+  }
+
+  public sellBeer(beer): void {
+    this.beerService.sellBeer(beer).subscribe(res => {
+      this.beers = res;
+      this.beersChangeEvent.emit(this.beers);
     });
   }
 }

@@ -1,0 +1,13 @@
+table th {
+  border: solid 1px #222;
+  padding: 12px;
+}
+
+table th:last-child {
+  min-width: 120px;
+}
+
+table button {
+  margin-right: 10px;
+  padding: 12px;
+}

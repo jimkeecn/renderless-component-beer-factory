@@ -43,7 +43,7 @@ export class BeerService {
       setTimeout(() => {
         this.beers.forEach(item => {
           if (item.name === beer.name) {
-            item.quantity = +1;
+            item.quantity += 1;
           }
         });
         observer.next(this.beers);
@@ -58,7 +58,7 @@ export class BeerService {
         this.beers.forEach(item => {
           if (item.name === beer.name) {
             if (item.quantity > 0) {
-              item.quantity = -1;
+              item.quantity -= 1;
             } else {
               alert("Ran out of " + item.name);
             }
